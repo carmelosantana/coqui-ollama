@@ -1,0 +1,68 @@
+{
+    "name": "carmelosantana/coqui-toolkit-ollama",
+    "description": "Ollama model management toolkit for Coqui — list, pull, delete, create, and search models via the Ollama REST API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carmelo Santana"
+        }
+    ],
+    "keywords": [
+        "php-agents",
+        "ollama",
+        "llm",
+        "model-management",
+        "coqui",
+        "toolkit"
+    ],
+    "require": {
+        "php": "^8.4",
+        "symfony/http-client": "^7.0"
+    },
+    "require-dev": {
+        "carmelosantana/php-agents": "^0.7",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitOllama\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitOllama\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse"
+    },
+    "extra": {
+        "php-agents": {
+            "toolkits": [
+                "CarmeloSantana\\CoquiToolkitOllama\\OllamaToolkit"
+            ],
+            "description": "Ollama model management — list, pull, delete, create, copy, search, and monitor local LLM models",
+            "credentials": {
+                "OLLAMA_HOST": {
+                    "description": "Ollama server URL — defaults to http://localhost:11434 if not set",
+                    "optional": true
+                }
+            },
+            "gated": {
+                "ollama": ["delete", "create"]
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
